@@ -6,26 +6,41 @@ DineEasy is an app designed for users who wish to reserve tables at restaurants 
 
 ### **Functional Requirements (Business Requirements)**  
 :heavy_check_mark: Users must be able to view available restaurants.
+
 :heavy_check_mark: Users must be able to select a restaurant.
+
 :heavy_check_mark: Users must be able to view each restaurant's menu.
+
 :heavy_check_mark: Users must be able to make a reservation for a specific day and time.
+
 :heavy_check_mark: Users must be able to choose the number of seats for the reservation.
+
 :heavy_check_mark: Users must receive a reservation confirmation via email.
+
 :heavy_check_mark: Users must be able to search for restaurants by name or location.
+
 :heavy_check_mark: Users must be able to filter restaurants by cuisine type (Italian, Asian, Vegan, etc.).
+
 :heavy_check_mark: Users must be able to cancel a reservation before the scheduled time.
+
 :heavy_check_mark: Restaurants must be able to view active reservations. 
 
 ---
 
 ### **Implementation Details**  
 ✔ Relationships between entities will be created using: @OneToOne, @OneToMany, @ManyToOne, @ManyToMany.
+
 ✔ All types of CRUD operations will be implemented.
+
 ✔ The app will be tested with different profiles and two databases (one H2 for testing).
+
 ✔ Unit tests will be implemented.
+
 ✔ Data will be validated, and exceptions will be handled appropriately.
+
 ✔ Pagination and sorting options will be used for data.
-✔ Spring Security will be included for minimal authentication with JDBC (optional). 
+
+✔ Spring Security will be included for minimal authentication with JDBC. 
 
 ---
 
