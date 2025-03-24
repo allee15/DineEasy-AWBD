@@ -6,7 +6,9 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
 
+import java.awt.print.Pageable;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
@@ -22,6 +24,7 @@ public class RestaurantRepositoryTest {
 
     private Restaurant restaurant;
     private FoodType foodType;
+    private org.springframework.data.domain.Pageable pageable;
 
     @BeforeEach
     public void setUp() {
@@ -38,23 +41,23 @@ public class RestaurantRepositoryTest {
 
     @Test
     public void testFindByLocation() {
-        List<Restaurant> restaurants = restaurantRepository.findByLocation("New York");
+        Page<Restaurant> restaurants = restaurantRepository.findByLocation("New York", pageable);
 
         assertFalse(restaurants.isEmpty(), "Restaurant list should not be empty");
-        assertEquals("Pasta Place", restaurants.get(0).getName(), "Restaurant name should match");
+        assertEquals("Pasta Place", restaurants.getContent().get(0).getName(), "Restaurant name should match");
     }
 
     @Test
     public void testFindByFoodType() {
-        List<Restaurant> restaurants = restaurantRepository.findByFoodType(foodType);
+        Page<Restaurant> restaurants = restaurantRepository.findByFoodType(foodType, pageable);
 
         assertFalse(restaurants.isEmpty(), "Restaurant list should not be empty");
-        assertEquals("Pasta Place", restaurants.get(0).getName(), "Restaurant name should match");
+        assertEquals("Pasta Place", restaurants.getContent().get(0).getName(), "Restaurant name should match");
     }
 
     @Test
     public void testFindByNonExistingLocation() {
-        List<Restaurant> restaurants = restaurantRepository.findByLocation("Non-Existing Location");
+        Page<Restaurant> restaurants = restaurantRepository.findByLocation("Non-Existing Location", pageable);
 
         assertTrue(restaurants.isEmpty(), "Restaurant list should be empty");
     }
@@ -63,7 +66,9 @@ public class RestaurantRepositoryTest {
     public void testFindByNonExistingFoodType() {
         FoodType nonExistingFoodType = new FoodType();
         nonExistingFoodType.setType("Mexican");
-        List<Restaurant> restaurants = restaurantRepository.findByFoodType(nonExistingFoodType);
+        nonExistingFoodType = foodTypeRepository.save(nonExistingFoodType);
+
+        Page<Restaurant> restaurants = restaurantRepository.findByFoodType(nonExistingFoodType, pageable);
 
         assertTrue(restaurants.isEmpty(), "Restaurant list should be empty");
     }

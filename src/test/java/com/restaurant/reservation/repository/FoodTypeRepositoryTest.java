@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -35,16 +36,16 @@ public class FoodTypeRepositoryTest {
     @Test
     public void testFindByType() {
         foodTypeRepository.save(foodType);
-        List<FoodType> foundFoodTypes = foodTypeRepository.findByType("Vegetarian");
+        Optional<FoodType> foundFoodTypes = foodTypeRepository.findById(1L);
 
         assertNotNull(foundFoodTypes, "Found food types should not be null");
         assertFalse(foundFoodTypes.isEmpty(), "Food type list should not be empty");
-        assertEquals("Vegetarian", foundFoodTypes.get(0).getType(), "The type should be 'Vegetarian'");
+        assertEquals("Vegetarian", foundFoodTypes.get().getType(), "The type should be 'Vegetarian'");
     }
 
     @Test
     public void testFindByNonExistingType() {
-        List<FoodType> foundFoodTypes = foodTypeRepository.findByType("NonExistingType");
+        Optional<FoodType> foundFoodTypes = foodTypeRepository.findById(3L);
 
         assertTrue(foundFoodTypes.isEmpty(), "Food type list should be empty for non-existing type");
     }

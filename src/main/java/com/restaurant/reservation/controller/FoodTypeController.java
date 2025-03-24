@@ -3,6 +3,7 @@ package com.restaurant.reservation.controller;
 import com.restaurant.reservation.model.FoodType;
 import com.restaurant.reservation.service.FoodTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -23,8 +24,12 @@ public class FoodTypeController {
     }
 
     @GetMapping
-    public List<FoodType> getAllFoodTypes() {
-        return foodTypeService.getAllFoodTypes();
+    public ResponseEntity<Page<FoodType>> getAllFoodTypes(
+            @RequestParam(defaultValue = "0") int page,
+            @RequestParam(defaultValue = "10") int size) {
+
+        Page<FoodType> foodTypesPage = foodTypeService.getAllFoodTypes(page, size);
+        return ResponseEntity.ok(foodTypesPage);
     }
 
     @GetMapping("/{id}")

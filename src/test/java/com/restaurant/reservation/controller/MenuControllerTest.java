@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.data.domain.Page;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
@@ -48,7 +49,7 @@ public class MenuControllerTest {
 
     @Test
     public void testGetAllMenus() throws Exception {
-        when(menuService.getAllMenus()).thenReturn(Collections.singletonList(new Menu("Dinner Menu", "food", 5, "")));
+        when(menuService.getAllMenus(5, 10)).thenReturn((Page<Menu>) Collections.singletonList(new Menu("Dinner Menu", "food", 5, "")));
 
         mockMvc.perform(get("/api/menus"))
                 .andExpect(status().isOk())

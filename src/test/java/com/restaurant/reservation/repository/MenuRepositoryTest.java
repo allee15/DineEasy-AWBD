@@ -1,10 +1,14 @@
 package com.restaurant.reservation.repository;
 
 import com.restaurant.reservation.model.Menu;
+import com.restaurant.reservation.model.Restaurant;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -16,13 +20,26 @@ public class MenuRepositoryTest {
     @Autowired
     private MenuRepository menuRepository;
 
+    @Autowired
+    private RestaurantRepository restaurantRepository;
+
     private Menu menu;
+    private Restaurant restaurant;
+    private Pageable pageable;
 
     @BeforeEach
     public void setUp() {
+        pageable = PageRequest.of(0, 10);
+
+        restaurant = new Restaurant();
+        restaurant.setName("Green Eatery");
+        restaurant.setLocation("New York");
+        restaurant = restaurantRepository.save(restaurant);
+
         menu = new Menu();
-        menu.setId(1L);
         menu.setName("Vegetarian Menu");
+        menu.setRestaurant(restaurant);
+        menu = menuRepository.save(menu);
     }
 
     @Test
@@ -36,17 +53,16 @@ public class MenuRepositoryTest {
 
     @Test
     public void testFindByRestaurantId() {
-        menuRepository.save(menu);
-        List<Menu> foundMenus = menuRepository.findByRestaurantId(1L);
+        Page<Menu> foundMenus = menuRepository.findByRestaurantId(restaurant.getId(), pageable);
 
-        assertNotNull(foundMenus, "Found menus should not be null");
         assertFalse(foundMenus.isEmpty(), "Menu list should not be empty");
-        assertEquals(1L, foundMenus.get(0).getId(), "Restaurant ID should be 1");
+        assertEquals(restaurant.getId(), foundMenus.getContent().get(0).getRestaurant().getId(),
+                "Menu should belong to the correct restaurant");
     }
 
     @Test
     public void testFindByNonExistingRestaurantId() {
-        List<Menu> foundMenus = menuRepository.findByRestaurantId(999L);
+        Page<Menu> foundMenus = menuRepository.findByRestaurantId(999L, pageable);
 
         assertTrue(foundMenus.isEmpty(), "Menu list should be empty for non-existing restaurant ID");
     }

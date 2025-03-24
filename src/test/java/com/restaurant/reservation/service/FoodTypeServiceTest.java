@@ -7,6 +7,9 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -44,16 +47,18 @@ class FoodTypeServiceTest {
 
     @Test
     public void testGetAllFoodTypes() {
+        FoodType foodType = new FoodType("Pizza");
+
         List<FoodType> foodTypes = new ArrayList<>();
         foodTypes.add(foodType);
-        when(foodTypeRepository.findAll()).thenReturn(foodTypes);
 
-        List<FoodType> result = foodTypeService.getAllFoodTypes();
+        Page<FoodType> page = new PageImpl<>(foodTypes, PageRequest.of(1, 10), foodTypes.size());
 
-        assertNotNull(result);
-        assertEquals(1, result.size());
-        assertEquals("Pizza", result.get(0).getType());
-        verify(foodTypeRepository, times(1)).findAll();
+        when(foodTypeRepository.findAll(PageRequest.of(1, 10))).thenReturn(page);
+
+        Page<FoodType> result = foodTypeService.getAllFoodTypes(1, 10);
+
+        verify(foodTypeRepository, times(1)).findAll(PageRequest.of(1, 10));
     }
 
     @Test

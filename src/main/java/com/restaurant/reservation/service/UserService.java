@@ -33,7 +33,11 @@ public class UserService {
 
     public void deleteUser(Long id) {
         log.info("Deleting User with ID: {}", id);
-        userRepository.deleteById(id);
+        if (userRepository.existsById(id)) {
+            userRepository.deleteById(id);
+        } else {
+            throw new CustomException("User with ID " + id + " not found");
+        }
     }
 
     public User updateUser(Long id, User updatedUser) {

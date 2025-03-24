@@ -35,6 +35,11 @@ public class ReviewService {
     public void deleteReview(Long id) {
         log.info("Deleting Review with ID: {}", id);
         reviewRepository.deleteById(id);
+        if (reviewRepository.existsById(id)) {
+            reviewRepository.deleteById(id);
+        } else {
+            throw new CustomException("Review with ID " + id + " not found");
+        }
     }
 
     public Review updateReview(Long id, Review updatedReview) {

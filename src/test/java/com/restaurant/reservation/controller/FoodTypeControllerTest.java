@@ -7,11 +7,16 @@ import org.junit.jupiter.api.Test;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageImpl;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.http.MediaType;
 import org.springframework.test.web.servlet.MockMvc;
 import org.springframework.test.web.servlet.setup.MockMvcBuilders;
 
+import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 import java.util.Optional;
 
 import static org.mockito.Mockito.*;
@@ -48,12 +53,24 @@ public class FoodTypeControllerTest {
 
     @Test
     public void testGetAllFoodTypes() throws Exception {
-        when(foodTypeService.getAllFoodTypes()).thenReturn(Collections.singletonList(new FoodType("Italian")));
+        // Crează o listă de FoodType pentru simularea paginării
+        FoodType foodType1 = new FoodType("Italian");
+        FoodType foodType2 = new FoodType("Vegetarian");
+        List<FoodType> foodTypes = Arrays.asList(foodType1, foodType2);
 
-        mockMvc.perform(get("/api/foodtypes"))
+        Page<FoodType> page = new PageImpl<>(foodTypes, PageRequest.of(0, 10), foodTypes.size());
+
+        when(foodTypeService.getAllFoodTypes(0, 10)).thenReturn(page);
+
+        mockMvc.perform(get("/api/foodtypes?page=0&size=10"))
                 .andExpect(status().isOk())
-                .andExpect(jsonPath("$[0].type").value("Italian"));
+                .andExpect(jsonPath("$.content[0].type").value("Italian"))
+                .andExpect(jsonPath("$.content[1].type").value("Vegetarian"))
+                .andExpect(jsonPath("$.totalElements").value(2))
+                .andExpect(jsonPath("$.totalPages").value(1))
+                .andExpect(jsonPath("$.size").value(10));
     }
+
 
     @Test
     public void testGetFoodTypeById() throws Exception {

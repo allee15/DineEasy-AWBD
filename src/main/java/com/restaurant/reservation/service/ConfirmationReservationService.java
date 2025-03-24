@@ -34,15 +34,18 @@ public class ConfirmationReservationService {
 
         public void deleteConfirmation(Long id) {
             log.info("Deleting ReservationConfirmation with ID: {}", id);
-            reservationConfirmationRepository.deleteById(id);
+            if (reservationConfirmationRepository.existsById(id)) {
+                reservationConfirmationRepository.deleteById(id);
+            } else {
+                throw new CustomException("FoodType with ID " + id + " not found");
+            }
     }
-
         public ReservationConfirmation updateConfirmation(Long id, ReservationConfirmation updatedConfirmation) {
             log.info("Updating ReservationConfirmation with ID: {}", id);
             if (reservationConfirmationRepository.existsById(id)) {
-            updatedConfirmation.setId(id);
-            return reservationConfirmationRepository.save(updatedConfirmation);
+                updatedConfirmation.setId(id);
+                return reservationConfirmationRepository.save(updatedConfirmation);
+            }
+            return null;
         }
-        return null;
-    }
 }

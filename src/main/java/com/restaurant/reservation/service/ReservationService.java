@@ -34,6 +34,11 @@ public class ReservationService {
 
     public void deleteReservation(Long id) {
         log.info("Deleting Reservation with ID: {}", id);
+        if (reservationRepository.existsById(id)) {
+            reservationRepository.deleteById(id);
+        } else {
+            throw new CustomException("Reservation with ID " + id + " not found");
+        }
         reservationRepository.deleteById(id);
     }
 
