@@ -5,25 +5,25 @@ DineEasy is an app designed for users who wish to reserve tables at restaurants 
 ---
 
 ### **Functional Requirements (Business Requirements)**  
-:heavy_check_mark: Users must be able to view available restaurants.
+✔ Users must be able to view available restaurants.
 
-:heavy_check_mark: Users must be able to select a restaurant.
+✔ Users must be able to select a restaurant.
 
-:heavy_check_mark: Users must be able to view each restaurant's menu.
+✔ Users must be able to view each restaurant's menu.
 
-:heavy_check_mark: Users must be able to make a reservation for a specific day and time.
+✔ Users must be able to make a reservation for a specific day and time.
 
-:heavy_check_mark: Users must be able to choose the number of seats for the reservation.
+✔ Users must be able to choose the number of seats for the reservation.
 
-:heavy_check_mark: Users must receive a reservation confirmation via email.
+✔ Users must receive a reservation confirmation via email.
 
-:heavy_check_mark: Users must be able to search for restaurants by name or location.
+✔ Users must be able to search for restaurants by name or location.
 
-:heavy_check_mark: Users must be able to filter restaurants by cuisine type (Italian, Asian, Vegan, etc.).
+✔ Users must be able to filter restaurants by cuisine type (Italian, Asian, Vegan, etc.).
 
-:heavy_check_mark: Users must be able to cancel a reservation before the scheduled time.
+✔ Users must be able to cancel a reservation before the scheduled time.
 
-:heavy_check_mark: Restaurants must be able to view active reservations. 
+✔ Restaurants must be able to view active reservations. 
 
 ---
 
