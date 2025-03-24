@@ -8,11 +8,11 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";  // Pagina de login, care poate fi un fișier HTML personalizat
+        return "login";
     }
 
     @GetMapping("/register")
     public String register() {
-        return "register";  // Pagina de înregistrare
+        return "register";
     }
 }

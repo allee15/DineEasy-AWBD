@@ -47,4 +47,12 @@ public class ReservationConfirmation {
     public Long getId() {
         return id;
     }
+
+    public Reservation getReservation() {
+        return reservation;
+    }
+
+    public void setReservation(Reservation reservation) {
+        this.reservation = reservation;
+    }
 }

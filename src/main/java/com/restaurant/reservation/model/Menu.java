@@ -2,6 +2,8 @@ package com.restaurant.reservation.model;
 
 import jakarta.persistence.*;
 
+import java.util.List;
+
 @Entity
 public class Menu {
     @Id
@@ -64,5 +66,13 @@ public class Menu {
 
     public void setPhoto(String photo) {
         this.photo = photo;
+    }
+
+    public Restaurant getRestaurant() {
+        return restaurant;
+    }
+
+    public void setRestaurant(Restaurant restaurant) {
+        this.restaurant = restaurant;
     }
 }
