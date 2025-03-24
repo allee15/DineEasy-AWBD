@@ -6,6 +6,7 @@ DineEasy is an app designed for users who wish to reserve tables at restaurants 
 
 ### **Functional Requirements (Business Requirements)**  
 :heavy_check_mark: Users must be able to view available restaurants.
+
 :heavy_check_mark: Users must be able to select a restaurant.
 :heavy_check_mark: Users must be able to view each restaurant's menu.
 :heavy_check_mark: Users must be able to make a reservation for a specific day and time.
