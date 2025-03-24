@@ -1,52 +1,52 @@
-## **DineEasy - Backend**  
-### **Despre proiect**  
-DineEasy este o aplicație destinată utilizatorilor care doresc să rezerve mese la restaurante într-un mod simplu și rapid. Aplicația permite utilizatorilor să exploreze restaurantele disponibile, să vadă meniul, să rezerve o masă pentru un anumit interval orar și să primească o confirmare prin e-mail, fără a fi necesară crearea unui cont.  
+## **DineEasy**  
+### **About the project**  
+DineEasy is an app designed for users who wish to reserve tables at restaurants in a simple and fast way. The app allows users to explore available restaurants, view the menu, book a table for a specific time slot, and receive a confirmation via email.  
 
 ---
 
-### **Cerințe funcționale (Business Requirements)**  
-:heavy_check_mark: Utilizatorii trebuie să poată vizualiza restaurantele disponibile.  
-:heavy_check_mark: Utilizatorii trebuie să poată selecta un restaurant.  
-:heavy_check_mark: Utilizatorii trebuie să poată vedea meniul fiecărui restaurant.  
-:heavy_check_mark: Utilizatorii trebuie să poată face o rezervare pentru o anumită zi și oră.  
-:heavy_check_mark: Utilizatorii trebuie să poată alege numărul de locuri pentru rezervare.  
-:heavy_check_mark: Utilizatorii trebuie să primească o confirmare a rezervării pe e-mail.  
-:heavy_check_mark: Utilizatorii trebuie să poată căuta restaurante după nume sau locație.  
-:heavy_check_mark: Utilizatorii trebuie să poată filtra restaurantele după tipul bucătăriei (italiană, asiatică, vegan etc.).  
-:heavy_check_mark: Utilizatorii trebuie să poată anula o rezervare înainte de ora programată.  
-:heavy_check_mark: Restaurantul trebuie să poată vedea rezervările active.  
+### **Functional Requirements (Business Requirements)**  
+:heavy_check_mark: Users must be able to view available restaurants.
+:heavy_check_mark: Users must be able to select a restaurant.
+:heavy_check_mark: Users must be able to view each restaurant's menu.
+:heavy_check_mark: Users must be able to make a reservation for a specific day and time.
+:heavy_check_mark: Users must be able to choose the number of seats for the reservation.
+:heavy_check_mark: Users must receive a reservation confirmation via email.
+:heavy_check_mark: Users must be able to search for restaurants by name or location.
+:heavy_check_mark: Users must be able to filter restaurants by cuisine type (Italian, Asian, Vegan, etc.).
+:heavy_check_mark: Users must be able to cancel a reservation before the scheduled time.
+:heavy_check_mark: Restaurants must be able to view active reservations. 
 
 ---
 
-### **Detalii despre implementare**  
-✔ Relațiile dintre entități vor fi create folosind: `@OneToOne`, `@OneToMany`, `@ManyToOne`, `@ManyToMany`.  
-✔ Toate tipurile de operațiuni CRUD vor fi implementate.  
-✔ Aplicația va fi testată cu profiluri diferite și două baze de date (una H2 pentru teste).  
-✔ Se vor implementa **unit tests**.  
-✔ Datele vor fi validate, iar excepțiile vor fi gestionate corespunzător.  
-✔ Se vor folosi opțiuni pentru **paginare și sortare** a datelor.  
-✔ Se va include Spring Security pentru autentificare minimă cu JDBC (opțional).  
+### **Implementation Details**  
+✔ Relationships between entities will be created using: @OneToOne, @OneToMany, @ManyToOne, @ManyToMany.
+✔ All types of CRUD operations will be implemented.
+✔ The app will be tested with different profiles and two databases (one H2 for testing).
+✔ Unit tests will be implemented.
+✔ Data will be validated, and exceptions will be handled appropriately.
+✔ Pagination and sorting options will be used for data.
+✔ Spring Security will be included for minimal authentication with JDBC (optional). 
 
 ---
 
-### **Funcționalități principale**  
-1️⃣ **Explorarea restaurantelor**  
-   - Afișează lista de restaurante disponibile.  
-   - Permite utilizatorilor să vadă informații despre restaurante (nume, locație, tip bucătărie).  
+### **Main Features**  
+1️⃣ Exploring Restaurants
+   - Displays the list of available restaurants.
+   - Allows users to view information about restaurants (name, location, cuisine type).
 
-2️⃣ **Selectarea unui restaurant și vizualizarea meniului**  
-   - Oferă detalii despre restaurant (program, adresa, recenzii).  
-   - Prezintă meniul restaurantului cu prețuri și imagini.  
+2️⃣ Selecting a Restaurant and Viewing the Menu
+   - Provides details about the restaurant (hours, address, reviews).
+   - Displays the restaurant's menu with prices and images.
 
-3️⃣ **Rezervarea unei mese**  
-   - Permite utilizatorilor să aleagă ziua și ora rezervării.  
-   - Afișează numărul de locuri disponibile.  
-   - Confirmarea rezervării este trimisă prin e-mail.  
+3️⃣ Making a Reservation
+   - Allows users to select the day and time for the reservation.
+   - Displays the number of available seats.
+   - Reservation confirmation is sent via email.
 
-4️⃣ **Filtrare și căutare restaurante**  
-   - Posibilitate de căutare după nume sau locație.  
-   - Filtrare după tipul bucătăriei (fast-food, fine dining, vegan etc.).  
+4️⃣ Filtering and Searching Restaurants
+   - Search by name or location.
+   - Filter by cuisine type (fast food, fine dining, vegan, etc.).
 
-5️⃣ **Detaliile rezervărilor**  
-   - Utilizatorii pot vedea detaliile rezervării (restaurant, dată, oră, număr de locuri).  
-   - Oferă opțiunea de anulare a rezervării înainte de ora programată.  
+5️⃣ Reservation Details
+   - Users can view reservation details (restaurant, date, time, number of seats).
+   - Provides the option to cancel a reservation before the scheduled time.
