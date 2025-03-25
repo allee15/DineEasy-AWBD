@@ -25,10 +25,8 @@ public class RestaurantService {
         return restaurantRepository.save(restaurant);
     }
 
-    public Page<Restaurant> getAllRestaurants(int page, int size) {
-        log.info("Fetching all Restaurants - Page: {}, Size: {}", page, size);
-        org.springframework.data.domain.Pageable pageable = PageRequest.of(page, size);
-        return restaurantRepository.findAll(pageable);
+    public List<Restaurant> getAllRestaurants() {
+        return restaurantRepository.findAll();
     }
 
     public Page<Restaurant> getRestaurantsByLocation(String location, int page, int size) {
@@ -41,11 +39,6 @@ public class RestaurantService {
         log.info("Fetching Restaurants by FoodType: {} - Page: {}, Size: {}", foodType, page, size);
         org.springframework.data.domain.Pageable pageable = PageRequest.of(page, size);
         return restaurantRepository.findByFoodType(foodType, pageable);
-    }
-
-    public List<Restaurant> getAllRestaurants() {
-        log.info("Fetching all Restaurants");
-        return restaurantRepository.findAll();
     }
 
     public Optional<Restaurant> getRestaurantById(Long id) {

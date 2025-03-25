@@ -13,7 +13,7 @@ public class Restaurant {
     private String location;
 
     @ManyToOne
-    @JoinColumn(name = "food_type_id")
+    @JoinColumn(name = "food_type_id", nullable = false)
     private FoodType foodType;
 
     @OneToMany(mappedBy = "restaurant")
