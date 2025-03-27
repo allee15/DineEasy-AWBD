@@ -16,9 +16,13 @@ public class ReviewController {
     @Autowired
     private ReviewService reviewService;
 
-    @PostMapping
-    public ResponseEntity<Review> createReview(@RequestBody Review review) {
-        Review savedReview = reviewService.addReview(review);
+    @PostMapping("/{restaurantId}/{userId}")
+    public ResponseEntity<Review> createReview(
+            @PathVariable Long restaurantId,
+            @PathVariable Long userId,
+            @RequestBody Review review) {
+
+        Review savedReview = reviewService.addReview(restaurantId, userId, review);
         return ResponseEntity.ok(savedReview);
     }
 

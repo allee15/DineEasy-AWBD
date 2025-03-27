@@ -1,8 +1,12 @@
 package com.restaurant.reservation.service;
 
 import com.restaurant.reservation.exception.CustomException;
+import com.restaurant.reservation.model.Restaurant;
 import com.restaurant.reservation.model.Review;
+import com.restaurant.reservation.model.User;
 import com.restaurant.reservation.repository.ReviewRepository;
+import com.restaurant.reservation.repository.RestaurantRepository;
+import com.restaurant.reservation.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -16,8 +20,24 @@ public class ReviewService {
     @Autowired
     private ReviewRepository reviewRepository;
 
-    public Review addReview(Review review) {
-        log.info("Adding new Review: {}", review);
+    @Autowired
+    private RestaurantRepository restaurantRepository;
+
+    @Autowired
+    private UserRepository userRepository;
+
+    public Review addReview(Long restaurantId, Long userId, Review review) {
+        log.info("Adding new Review for restaurantId: {}, userId: {}", restaurantId, userId);
+
+        Restaurant restaurant = restaurantRepository.findById(restaurantId)
+                .orElseThrow(() -> new CustomException("Restaurant with ID " + restaurantId + " not found"));
+
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new CustomException("User with ID " + userId + " not found"));
+
+        review.setRestaurant(restaurant);
+        review.setUser(user);
+
         return reviewRepository.save(review);
     }
 

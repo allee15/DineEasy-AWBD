@@ -77,9 +77,8 @@
         <h3><%= restaurant.getName() %></h3>
         <p><strong>Location:</strong> <%= restaurant.getLocation() %></p>
         <p><strong>Food Type:</strong> <%= restaurant.getFoodType() != null ? restaurant.getFoodType().getType() : "Unknown" %></p>
-        <form action="/reserve" method="get">
-            <input type="hidden" name="restaurantId" value="<%= restaurant.getId() %>" />
-            <button type="submit" class="reserve-button">Reserve</button>
+        <form action="${pageContext.request.contextPath}/restaurants/restaurantDetails/<%= restaurant.getId() %>" method="get">
+            <button type="submit" class="reserve-button">View Details</button>
         </form>
     </div>
 </div>
