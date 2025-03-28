@@ -29,7 +29,7 @@ public class ReviewController {
 
         reviewService.addReview(restaurantId, userId, review);
 
-        return "redirect:/restaurants/restaurantDetails/" + restaurantId;
+        return "Your request was handled successfully. Go back to previous page.";
     }
 
     @GetMapping
@@ -49,9 +49,9 @@ public class ReviewController {
         return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteReview(@PathVariable Long id) {
-        reviewService.deleteReview(id);
-        return ResponseEntity.noContent().build();
+    @PostMapping("/delete")
+    public String deleteReview(@RequestParam Long reviewId) {
+        reviewService.deleteReview(reviewId);
+        return "Your request was handled successfully. Go back to previous page.";
     }
 }

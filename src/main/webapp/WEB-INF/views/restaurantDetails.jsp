@@ -10,6 +10,20 @@
         .menu-item, .review-item { border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px; }
         .add-review-form { margin-top: 20px; }
         .submit-button { background-color: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; }
+        .delete-button {
+            background-color: #f44336;
+            color: white;
+            padding: 8px 12px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-top: 5px;
+        }
+
+        .delete-button:hover {
+            background-color: #d32f2f;
+        }
+
     </style>
 </head>
 <body>
@@ -49,6 +63,11 @@
     <div class="review-item">
         <p><strong>Rating:</strong> <%= review.getRating() %>/5</p>
         <p><%= review.getComment() %></p>
+
+        <form action="${pageContext.request.contextPath}/reviews/delete" method="post">
+            <input type="hidden" name="reviewId" value="<%= review.getId() %>"/>
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
     </div>
     <%
         }
