@@ -2,7 +2,7 @@ package com.restaurant.reservation.model;
 
 import jakarta.persistence.*;
 
-import java.util.List;
+import java.util.Optional;
 
 @Entity
 public class Menu {

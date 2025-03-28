@@ -44,6 +44,11 @@
         <p><strong><%= menu.getName() %></strong> - <%= menu.getPrice() %> RON</p>
         <p><%= menu.getDescription() %></p>
         <img src="<%= menu.getPhoto() %>" alt="Menu Image" width="150">
+
+        <form action="${pageContext.request.contextPath}/menus/delete" method="post">
+            <input type="hidden" name="menuId" value="<%= menu.getId() %>"/>
+            <button type="submit" class="delete-button">Delete</button>
+        </form>
     </div>
     <%
         }
@@ -53,6 +58,21 @@
     <%
         }
     %>
+
+    <h3>Add a Menu Item</h3>
+    <form action="${pageContext.request.contextPath}/menus/add" method="post" class="add-menu-form">
+        <label>Name:</label>
+        <input type="text" name="name" required/><br>
+        <label>Description:</label><br>
+        <textarea name="description" rows="4" cols="50" required></textarea><br>
+        <label>Price:</label>
+        <input type="number" name="price" required/><br>
+        <label>Photo URL:</label>
+        <input type="text" name="photo" required/><br>
+        <input type="hidden" name="restaurantId" value="${restaurant.id}"/>
+
+        <button type="submit" class="submit-button">Add Menu Item</button>
+    </form>
 
     <h3>Reviews</h3>
     <%
