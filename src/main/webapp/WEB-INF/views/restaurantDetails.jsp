@@ -60,9 +60,10 @@
     %>
 
     <h3>Add a Review</h3>
-    <form action="/addReview" method="post" class="add-review-form">
-        <input type="hidden" name="restaurantId" value="${restaurant.id}" />
-        <label>Rating:</label>
+    <form action="${pageContext.request.contextPath}/reviews/add" method="post" class="add-review-form">
+        <label>Rating:</label><input type="hidden" name="restaurantId" value="${restaurant.id}" />
+        <input type="hidden" name="userId" value="1" /> <!--TODO: fixme with userID -->
+
         <select name="rating">
             <option value="1">1</option>
             <option value="2">2</option>

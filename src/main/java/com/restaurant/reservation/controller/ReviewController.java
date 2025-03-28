@@ -10,20 +10,26 @@ import java.util.List;
 import java.util.Optional;
 
 @RestController
-@RequestMapping("/api/reviews")
+@RequestMapping("/reviews")
 public class ReviewController {
 
     @Autowired
     private ReviewService reviewService;
 
-    @PostMapping("/{restaurantId}/{userId}")
-    public ResponseEntity<Review> createReview(
-            @PathVariable Long restaurantId,
-            @PathVariable Long userId,
-            @RequestBody Review review) {
+    @PostMapping("/add")
+    public String addReview(
+            @RequestParam Long restaurantId,
+            @RequestParam Long userId,
+            @RequestParam int rating,
+            @RequestParam String comment) {
 
-        Review savedReview = reviewService.addReview(restaurantId, userId, review);
-        return ResponseEntity.ok(savedReview);
+        Review review = new Review();
+        review.setRating(rating);
+        review.setComment(comment);
+
+        reviewService.addReview(restaurantId, userId, review);
+
+        return "redirect:/restaurants/restaurantDetails/" + restaurantId;
     }
 
     @GetMapping

@@ -29,6 +29,10 @@ public class ReviewService {
     public Review addReview(Long restaurantId, Long userId, Review review) {
         log.info("Adding new Review for restaurantId: {}, userId: {}", restaurantId, userId);
 
+        if (review.getComment() == null || review.getComment().trim().isEmpty()) {
+            throw new CustomException("Comentariul nu poate fi gol.");
+        }
+
         Restaurant restaurant = restaurantRepository.findById(restaurantId)
                 .orElseThrow(() -> new CustomException("Restaurant with ID " + restaurantId + " not found"));
 
