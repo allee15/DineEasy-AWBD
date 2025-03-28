@@ -59,10 +59,28 @@ public class MenuController {
         return menu.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<Menu> updateMenu(@PathVariable Long id, @RequestBody Menu updatedMenu) {
-        Menu updated = menuService.updateMenu(id, updatedMenu);
-        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
+    @PostMapping("/update/{id}")
+    public String updateMenu(@PathVariable Long id,
+                             @RequestParam String name,
+                             @RequestParam String description,
+                             @RequestParam int price,
+                             @RequestParam String photo) {
+
+        Optional<Menu> menuOptional = menuService.getMenuById(id);
+
+        if (menuOptional.isEmpty()) {
+            return "Meniu not found!";
+        }
+
+        Menu menu = menuOptional.get();
+        menu.setName(name);
+        menu.setDescription(description);
+        menu.setPrice(price);
+        menu.setPhoto(photo);
+
+        menuService.updateMenu(menu);
+
+        return "Your request was handled successfully. Go back to previous page.";
     }
 
     @PostMapping("/delete")

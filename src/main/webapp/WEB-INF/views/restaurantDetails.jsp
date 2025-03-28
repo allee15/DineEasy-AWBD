@@ -49,6 +49,22 @@
             <input type="hidden" name="menuId" value="<%= menu.getId() %>"/>
             <button type="submit" class="delete-button">Delete</button>
         </form>
+
+        <form action="${pageContext.request.contextPath}/menus/update/<%= menu.getId() %>" method="post">
+            <p><strong>Name:</strong>
+                <input type="text" name="name" value="<%= menu.getName() %>" required/>
+            </p>
+            <p><strong>Description:</strong>
+                <textarea name="description" required><%= menu.getDescription() %></textarea>
+            </p>
+            <p><strong>Price:</strong>
+                <input type="number" step="0.01" name="price" value="<%= menu.getPrice() %>" required/>
+            </p>
+            <p><strong>Photo:</strong>
+                <input type="text" name="photo" value="<%= menu.getPhoto() %>" />
+            </p>
+            <button type="submit" class="submit-button">Update Menu</button>
+        </form>
     </div>
     <%
         }

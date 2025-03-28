@@ -45,12 +45,13 @@ public class MenuService {
         }
     }
 
-    public Menu updateMenu(Long id, Menu updateMenu) {
-        log.info("Updating Menu with ID: {}", id);
-        if (menuRepository.existsById(id)) {
-            updateMenu.setId(id);
-            return menuRepository.save(updateMenu);
+    public Menu updateMenu(Menu menu) {
+        log.info("Updating Menu: {}", menu);
+
+        if (menuRepository.existsById(menu.getId())) {
+            return menuRepository.save(menu);
+        } else {
+            throw new CustomException("Meniu not found");
         }
-        return null;
     }
 }
