@@ -10,6 +10,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 
+import java.util.List;
 import java.util.Optional;
 
 @Slf4j
@@ -23,10 +24,9 @@ public class FoodTypeService {
         return foodTypeRepository.save(foodType);
     }
 
-    public Page<FoodType> getAllFoodTypes(int page, int size) {
-        log.info("Fetching all FoodTypes - Page: {}, Size: {}", page, size);
-        Pageable pageable = PageRequest.of(page, size);
-        return foodTypeRepository.findAll(pageable);
+    public List<FoodType> getAllFoodTypes() {
+        log.info("Fetching all FoodTypes - Page: {}, Size: {}");
+        return foodTypeRepository.findAll();
     }
 
     public Optional<FoodType> getFoodTypeById(Long id) {

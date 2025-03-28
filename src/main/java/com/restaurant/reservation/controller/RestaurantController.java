@@ -1,17 +1,18 @@
 package com.restaurant.reservation.controller;
 
+import com.restaurant.reservation.exception.CustomException;
+import com.restaurant.reservation.model.FoodType;
 import com.restaurant.reservation.model.Menu;
 import com.restaurant.reservation.model.Review;
+import com.restaurant.reservation.repository.FoodTypeRepository;
 import com.restaurant.reservation.repository.MenuRepository;
 import com.restaurant.reservation.repository.ReviewRepository;
+import com.restaurant.reservation.validator.RestaurantValidator;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.domain.Page;
-import org.springframework.data.domain.PageRequest;
 import org.springframework.ui.Model;
 import com.restaurant.reservation.model.Restaurant;
 import com.restaurant.reservation.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,9 @@ public class RestaurantController {
 
     @Autowired
     private ReviewRepository reviewRepository;
+
+    @Autowired
+    private FoodTypeRepository foodTypeRepository;
 
     @GetMapping
     public String getAllRestaurants(Model model) {
@@ -62,19 +66,32 @@ public class RestaurantController {
 
     @GetMapping("/new")
     public String showAddRestaurantForm(Model model) {
+        List<FoodType> foodTypes = foodTypeRepository.findAll();
+        model.addAttribute("foodTypes", foodTypes);
         model.addAttribute("restaurant", new Restaurant());
         return "add-restaurant";
     }
 
-    @PostMapping
-    public String addRestaurant(@ModelAttribute Restaurant restaurant, Model model) {
+    @PostMapping("/add")
+    public String addRestaurant(@RequestParam String name, @RequestParam String location, @RequestParam Long foodTypeId) {
+        FoodType foodType = foodTypeRepository.findById(foodTypeId).orElseThrow(() -> new RuntimeException("FoodType not found"));
+
+        Restaurant restaurant = new Restaurant();
+        restaurant.setName(name);
+        restaurant.setLocation(location);
+        restaurant.setFoodType(foodType);
+
         restaurantService.addRestaurant(restaurant);
+
         return "redirect:/restaurants";
     }
 
+    @GetMapping("/edit/{id}")
     public String showEditRestaurantForm(@PathVariable Long id, Model model) {
         Optional<Restaurant> restaurant = restaurantService.getRestaurantById(id);
         if (restaurant.isPresent()) {
+            List<FoodType> foodTypes = foodTypeRepository.findAll();
+            model.addAttribute("foodTypes", foodTypes);
             model.addAttribute("restaurant", restaurant.get());
             return "edit-restaurant";
         }
@@ -82,9 +99,22 @@ public class RestaurantController {
     }
 
     @PostMapping("/update/{id}")
-    public String updateRestaurant(@PathVariable Long id, @ModelAttribute Restaurant updatedRestaurant, Model model) {
+    public String updateRestaurant(@PathVariable Long id, @RequestParam Long foodTypeId, @ModelAttribute Restaurant updatedRestaurant) {
+        log.info("Updating restaurant with ID: " + id);
+
+        if (!RestaurantValidator.isValidRestaurant(updatedRestaurant)) {
+            throw new CustomException("Invalid restaurant");
+        }
+
+        Optional<FoodType> foodTypeOpt = foodTypeRepository.findById(foodTypeId);
+        if (foodTypeOpt.isEmpty()) {
+            throw new CustomException("FoodType not found");
+        }
+
+        updatedRestaurant.setFoodType(foodTypeOpt.get());
         updatedRestaurant.setId(id);
         restaurantService.updateRestaurant(id, updatedRestaurant);
+
         return "redirect:/restaurants";
     }
 

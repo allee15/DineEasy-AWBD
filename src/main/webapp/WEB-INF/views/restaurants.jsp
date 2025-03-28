@@ -48,7 +48,13 @@
     }
 </style>
 
-<a href="/restaurants/new">Add New Restaurant</a><br><br>
+<a href="${pageContext.request.contextPath}/restaurants/new">Add New Restaurant</a>
+<a href="${pageContext.request.contextPath}/reservation/all">
+    <button type="button">See Reservations</button>
+</a>
+<a href="${pageContext.request.contextPath}/foodtypes/all">
+    <button type="button">See food types</button>
+</a>
 
 <%
     List<String> images = new ArrayList<>();
@@ -80,6 +86,17 @@
         <form action="${pageContext.request.contextPath}/restaurants/restaurantDetails/<%= restaurant.getId() %>" method="get">
             <button type="submit" class="reserve-button">View Details</button>
         </form>
+        <form action="${pageContext.request.contextPath}/reservation/new" method="get" style="display: inline;">
+            <input type="hidden" name="restaurantId" value="<%= restaurant.getId() %>"/>
+            <button type="submit" class="reserve-button" style="background-color: #FF5733;">Make a Reservation</button>
+        </form>
+        <form action="${pageContext.request.contextPath}/restaurants/edit/<%= restaurant.getId() %>" method="get">
+            <button type="submit" class="reserve-button" style="background-color: #007BFF;">Edit</button>
+        </form>
+        <form action="${pageContext.request.contextPath}/restaurants/delete/<%= restaurant.getId() %>" method="post" style="display: inline;">
+            <button type="submit" class="reserve-button" style="background-color: #DC3545;" onclick="return confirm('Are you sure you want to delete this restaurant?');">Delete</button>
+        </form>
+
     </div>
 </div>
 <% } %>

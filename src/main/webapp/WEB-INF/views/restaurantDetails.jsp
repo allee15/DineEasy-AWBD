@@ -33,7 +33,10 @@
     <h2>${restaurant.name}</h2>
     <p><strong>Location:</strong> ${restaurant.location}</p>
     <p><strong>Food Type:</strong> ${restaurant.foodType.type}</p>
-
+    <form action="${pageContext.request.contextPath}/reservation/new" method="get" style="display: inline;">
+        <input type="hidden" name="restaurantId" value="${restaurant.id}"/>
+        <button type="submit" class="reserve-button" style="background-color: #FF5733;">Make a Reservation</button>
+    </form>
     <h3>Menu</h3>
     <%
         List<Menu> menuItems = (List<Menu>) request.getAttribute("menuItems");

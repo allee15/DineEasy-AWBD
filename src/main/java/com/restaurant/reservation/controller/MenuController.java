@@ -1,17 +1,19 @@
 package com.restaurant.reservation.controller;
 
+import com.restaurant.reservation.exception.CustomException;
 import com.restaurant.reservation.model.Menu;
 import com.restaurant.reservation.service.MenuService;
 import com.restaurant.reservation.service.RestaurantService;
+import com.restaurant.reservation.validator.MenuValidator;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import com.restaurant.reservation.model.Restaurant;
-import java.util.List;
 import java.util.Optional;
 
-@RestController
+@Controller
 @RequestMapping("/menus")
 public class MenuController {
 
@@ -31,7 +33,7 @@ public class MenuController {
         Optional<Restaurant> restaurantOptional = restaurantService.getRestaurantById(restaurantId);
 
         if (restaurantOptional.isEmpty()) {
-            return "An error has occured. Please go back and try again.";
+            throw new CustomException("An error has occured. Please go back and try again.");
         }
 
         Restaurant restaurant = restaurantOptional.get();
@@ -42,9 +44,13 @@ public class MenuController {
         menu.setPrice(price);
         menu.setPhoto(photo);
 
+        if (!MenuValidator.isValidMenu(menu)) {
+            throw new CustomException("Invalid menu");
+        }
+
         menuService.addMenu(menu);
 
-        return "Your request was handled successfully. Go back to previous page.";
+        return "redirect:/restaurants";
     }
 
     @GetMapping
@@ -53,7 +59,7 @@ public class MenuController {
         return menuService.getAllMenus(page, size);
     }
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}") //TODO
     public ResponseEntity<Menu> getMenuById(@PathVariable Long id) {
         Optional<Menu> menu = menuService.getMenuById(id);
         return menu.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
@@ -69,7 +75,7 @@ public class MenuController {
         Optional<Menu> menuOptional = menuService.getMenuById(id);
 
         if (menuOptional.isEmpty()) {
-            return "Meniu not found!";
+            throw new CustomException("An error has occured. Please go back and try again.");
         }
 
         Menu menu = menuOptional.get();
@@ -80,12 +86,12 @@ public class MenuController {
 
         menuService.updateMenu(menu);
 
-        return "Your request was handled successfully. Go back to previous page.";
+        return "redirect:/restaurants";
     }
 
     @PostMapping("/delete")
     public String deleteMenu(@RequestParam Long menuId) {
         menuService.deleteMenu(menuId);
-        return "Your request was handled successfully. Go back to previous page.";
+        return "redirect:/restaurants";
     }
 }

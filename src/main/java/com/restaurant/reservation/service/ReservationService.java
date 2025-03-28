@@ -16,9 +16,9 @@ public class ReservationService {
     @Autowired
     private ReservationRepository reservationRepository;
 
-    public Reservation addReservation(Reservation reservation) {
+    public void addReservation(Reservation reservation) {
         log.info("Adding new Reservation: {}", reservation);
-        return reservationRepository.save(reservation);
+        reservationRepository.save(reservation);
     }
 
     public List<Reservation> getAllReservations() {
@@ -42,10 +42,10 @@ public class ReservationService {
         reservationRepository.deleteById(id);
     }
 
-    public Reservation updateReservation(Long id, Reservation updatedReservation) {
-        log.info("Updating Reservation with ID: {}", id);
-        if (reservationRepository.existsById(id)) {
-            updatedReservation.setId(id);
+    public Reservation updateReservation(Reservation updatedReservation) {
+        log.info("Updating Reservation with ID: {}", updatedReservation.getId());
+        if (reservationRepository.existsById(updatedReservation.getId())) {
+            updatedReservation.setId(updatedReservation.getId());
             return reservationRepository.save(updatedReservation);
         }
         return null;

@@ -51,7 +51,7 @@ public class MenuService {
         if (menuRepository.existsById(menu.getId())) {
             return menuRepository.save(menu);
         } else {
-            throw new CustomException("Meniu not found");
+            throw new CustomException("Menu not found");
         }
     }
 }

@@ -8,6 +8,6 @@ import org.springframework.data.domain.Pageable;
 
 @Repository
 public interface FoodTypeRepository extends JpaRepository<FoodType, Long> {
-    Page<FoodType> findById(Long id, Pageable pageable);
+    FoodType findByType(String type);
 }
 
