@@ -8,11 +8,11 @@ public class AuthController {
 
     @GetMapping("/login")
     public String login() {
-        return "redirect:/login";
+        return "restaurants";
     }
 
     @GetMapping("/register")
     public String register() {
-        return "register";
+        return "restaurants";
     }
 }

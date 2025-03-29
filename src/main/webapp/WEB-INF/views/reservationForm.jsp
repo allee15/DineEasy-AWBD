@@ -1,13 +1,11 @@
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="com.restaurant.reservation.model.Reservation" %>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Create a Reservation</title>
-    <style>
-        .container { width: 80%; margin: auto; text-align: center; }
-        .submit-button { background-color: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; }
-    </style>
 </head>
 <body>
 <div class="container">

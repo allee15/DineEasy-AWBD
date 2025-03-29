@@ -1,6 +1,8 @@
 <%@ page import="com.restaurant.reservation.model.FoodType" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+
 <html>
 <head>
     <title>Food Types</title>

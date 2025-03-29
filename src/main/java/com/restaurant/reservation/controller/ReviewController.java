@@ -3,16 +3,15 @@ package com.restaurant.reservation.controller;
 import com.restaurant.reservation.exception.CustomException;
 import com.restaurant.reservation.model.Review;
 import com.restaurant.reservation.service.ReviewService;
-import com.restaurant.reservation.validator.RestaurantValidator;
 import com.restaurant.reservation.validator.ReviewValidator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Optional;
 
+@Slf4j
 @Controller
 @RequestMapping("/reviews")
 public class ReviewController {
@@ -45,16 +44,17 @@ public class ReviewController {
         return reviewService.getAllReviews();
     }
 
-    @GetMapping("/{id}") //TODO
-    public ResponseEntity<Review> getReviewById(@PathVariable Long id) {
-        Optional<Review> review = reviewService.getReviewById(id);
-        return review.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
+    @PostMapping("/review/update/{id}")
+    public String updateReview(@PathVariable Long id, @RequestBody Review updatedReview) {
+        log.info("Updating review with ID: " + id);
+        if (!ReviewValidator.isValidReview(updatedReview)) {
+            throw new CustomException("Invalid review");
+        }
 
-    @PutMapping("/{id}") //TODO
-    public ResponseEntity<Review> updateReview(@PathVariable Long id, @RequestBody Review updatedReview) {
-        Review updated = reviewService.updateReview(id, updatedReview);
-        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
+        updatedReview.setId(id);
+        reviewService.updateReview(id, updatedReview);
+
+        return "redirect:/restaurants";
     }
 
     @PostMapping("/delete")

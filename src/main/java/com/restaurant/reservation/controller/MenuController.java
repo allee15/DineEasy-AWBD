@@ -5,14 +5,17 @@ import com.restaurant.reservation.model.Menu;
 import com.restaurant.reservation.service.MenuService;
 import com.restaurant.reservation.service.RestaurantService;
 import com.restaurant.reservation.validator.MenuValidator;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.data.domain.Page;
 import com.restaurant.reservation.model.Restaurant;
+
 import java.util.Optional;
 
+@Slf4j
 @Controller
 @RequestMapping("/menus")
 public class MenuController {
@@ -53,16 +56,20 @@ public class MenuController {
         return "redirect:/restaurants";
     }
 
-    @GetMapping
+    @GetMapping("/all-menus")
     public Page<Menu> getAllMenus(@RequestParam(defaultValue = "0") int page,
                                   @RequestParam(defaultValue = "10") int size) {
         return menuService.getAllMenus(page, size);
     }
 
-    @GetMapping("/{id}") //TODO
-    public ResponseEntity<Menu> getMenuById(@PathVariable Long id) {
-        Optional<Menu> menu = menuService.getMenuById(id);
-        return menu.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    @GetMapping("/menu-details/s{id}")
+    public String getMenuById(@PathVariable Long id, Model model) {
+        Menu menu = menuService.getMenuById(id)
+                .orElseThrow(() -> new CustomException("Menu not found"));
+
+        log.info("Menu item: {}", menu);
+        model.addAttribute("menu", menu);
+        return "restaurants";
     }
 
     @PostMapping("/update/{id}")

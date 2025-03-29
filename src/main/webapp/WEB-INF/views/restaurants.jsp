@@ -1,52 +1,14 @@
 <%@ page import="com.restaurant.reservation.model.Restaurant" %>
 <%@ page import="java.util.List" %>
 <%@ page import="java.util.ArrayList" %>
-<!DOCTYPE html>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
+
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+
+<!DOCTYPE html>
 <html>
 <body>
 <title>Restaurants List</title>
-<style>
-    h1 {
-        text-align: center;
-    }
-    .restaurant-container {
-        display: flex;
-        margin-bottom: 20px;
-        margin-top: 20px;
-        border: 1px solid #ccc;
-        padding: 10px;
-    }
-    .restaurant-image {
-        width: 150px;
-        height: 150px;
-        object-fit: cover;
-        margin-right: 20px;
-    }
-    .restaurant-info {
-        flex: 1;
-    }
-    .restaurant-info h3 {
-        margin: 0;
-    }
-    .pagination {
-        text-align: center;
-        margin-top: 20px;
-    }
-    .reserve-button {
-        margin-top: 10px;
-        padding: 10px;
-        background-color: #4CAF50;
-        color: white;
-        border: none;
-        cursor: pointer;
-        font-size: 16px;
-        border-radius: 5px;
-    }
-    .reserve-button:hover {
-        background-color: #45a049;
-    }
-</style>
 
 <a href="${pageContext.request.contextPath}/restaurants/new">Add New Restaurant</a>
 <a href="${pageContext.request.contextPath}/reservation/all">

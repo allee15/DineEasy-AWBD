@@ -98,12 +98,6 @@ public class ReservationController {
         return "reservations";
     }
 
-    @GetMapping("/{id}") //TODO
-    public ResponseEntity<Reservation> getReservationById(@PathVariable Long id) {
-        Optional<Reservation> reservation = reservationService.getReservationById(id);
-        return reservation.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
-    }
-
     @GetMapping("/delete/{id}")
     public String deleteReservation(@PathVariable Long id) {
         Optional<Reservation> reservationOptional = reservationService.getReservationById(id);

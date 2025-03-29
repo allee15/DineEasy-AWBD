@@ -1,30 +1,13 @@
 <%@ page import="com.restaurant.reservation.model.Menu" %>
 <%@ page import="com.restaurant.reservation.model.Review" %>
 <%@ page import="java.util.List" %>
+<link rel="stylesheet" type="text/css" href="css/styles.css">
+
 <!DOCTYPE html>
 <html>
 <head>
     <title>Restaurant Details</title>
-    <style>
-        .container { width: 80%; margin: auto; text-align: center; }
-        .menu-item, .review-item { border: 1px solid #ddd; padding: 10px; margin: 10px; border-radius: 5px; }
-        .add-review-form { margin-top: 20px; }
-        .submit-button { background-color: #4CAF50; color: white; padding: 10px; border: none; cursor: pointer; }
-        .delete-button {
-            background-color: #f44336;
-            color: white;
-            padding: 8px 12px;
-            border: none;
-            cursor: pointer;
-            border-radius: 5px;
-            margin-top: 5px;
-        }
 
-        .delete-button:hover {
-            background-color: #d32f2f;
-        }
-
-    </style>
 </head>
 <body>
 <div class="container">
