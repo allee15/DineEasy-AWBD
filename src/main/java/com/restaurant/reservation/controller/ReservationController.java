@@ -11,8 +11,8 @@ import com.restaurant.reservation.model.User;
 import com.restaurant.reservation.service.ReservationService;
 import com.restaurant.reservation.service.RestaurantService;
 import com.restaurant.reservation.service.UserService;
+import com.restaurant.reservation.service.EmailService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
@@ -32,6 +32,8 @@ public class ReservationController {
 
     @Autowired
     private UserService userService;
+
+    private EmailService emailService;
 
     @GetMapping("/new")
     public String showAddReservationForm(@RequestParam("restaurantId") Long restaurantId, Model model) {
@@ -84,6 +86,18 @@ public class ReservationController {
         }
 
         reservationService.addReservation(reservation);
+
+        try {
+            String reservationDetails = String.format("Restaurant: %s\nDate: %s\nNumber of People: %d\nStatus: %s",
+                    restaurant.getName(),
+                    reservationDateTime.toString(),
+                    nbOfPeople,
+                    status);
+
+            emailService.sendReservationConfirmation(user.getEmail(), reservationDetails);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
 
         return "redirect:/restaurants";
     }
