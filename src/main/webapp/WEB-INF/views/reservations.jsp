@@ -1,16 +1,21 @@
 <%@ page import="com.restaurant.reservation.model.Reservation" %>
 <%@ page import="java.util.List" %>
+<%@ page import="java.time.format.DateTimeFormatter" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 <html>
-<head>
-    <title>All Reservations</title>
-</head>
-<body>
-<h1>All Reservations</h1>
 
-<table border="1">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>All reservations</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
+</head>
+
+<body>
+<h1>All reservations</h1>
+
+<table>
     <thead>
     <tr>
         <th>Reservation ID</th>
@@ -25,28 +30,29 @@
     <tbody>
     <%
         List<Reservation> reservations = (List<Reservation>) request.getAttribute("reservations");
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd.MM.yyyy, HH:mm");
         for (Reservation reservation : reservations) {
+            String formattedDate = reservation.getReservationDate().format(formatter);
     %>
     <tr>
         <td><%= reservation.getId() %></td>
         <td><%= reservation.getUser().getName() %></td>
         <td><%= reservation.getRestaurant().getName() %></td>
-        <td><%= reservation.getReservationDate() %></td>
+        <td><%= formattedDate %></td>
         <td><%= reservation.getNbOfPeople() %></td>
         <td><%= reservation.getStatus() %></td>
         <td>
-            <a href="<%= request.getContextPath() + "/reservation/delete/" + reservation.getId() %>">
-                <button>Delete</button>
-            </a>
+            <div class="action-buttons">
+                <% if (!"CONFIRMED".equals(reservation.getStatus())) { %>
+                <form action="<%= request.getContextPath() + "/reservationconfirmations/confirm/" + reservation.getId() %>" method="post">
+                    <button type="submit" class="view-button">Confirm</button>
+                </form>
+                <% } %>
 
-        <td>
-            <% if (!"CONFIRMED".equals(reservation.getStatus())) { %>
-            <form action="<%= request.getContextPath() + "/reservationconfirmations/confirm/" + reservation.getId() %>" method="post">
-                <button type="submit">Confirm</button>
-            </form>
-            <% } %>
-        </td>
-
+                <a href="<%= request.getContextPath() + "/reservation/delete/" + reservation.getId() %>">
+                    <button class="delete-button">Delete</button>
+                </a>
+            </div>
         </td>
     </tr>
     <%

@@ -53,7 +53,7 @@ public class MenuController {
 
         menuService.addMenu(menu);
 
-        return "redirect:/restaurants";
+        return "redirect:/restaurants/restaurantDetails/" + restaurantId + "?";
     }
 
     @GetMapping("/all-menus")
@@ -77,7 +77,8 @@ public class MenuController {
                              @RequestParam String name,
                              @RequestParam String description,
                              @RequestParam int price,
-                             @RequestParam String photo) {
+                             @RequestParam String photo,
+                             @RequestParam Long restaurantId) {
 
         Optional<Menu> menuOptional = menuService.getMenuById(id);
 
@@ -93,7 +94,7 @@ public class MenuController {
 
         menuService.updateMenu(menu);
 
-        return "redirect:/restaurants";
+        return "redirect:/restaurants/restaurantDetails/" + restaurantId + "?";
     }
 
     @PostMapping("/delete")

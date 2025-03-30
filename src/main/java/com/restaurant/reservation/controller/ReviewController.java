@@ -36,7 +36,7 @@ public class ReviewController {
 
         reviewService.addReview(restaurantId, userId, review);
 
-        return "redirect:/restaurants";
+        return "redirect:/restaurants/restaurantDetails/" + restaurantId + "?";
     }
 
     @GetMapping

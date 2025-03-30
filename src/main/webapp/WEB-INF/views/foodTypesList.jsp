@@ -1,22 +1,25 @@
 <%@ page import="com.restaurant.reservation.model.FoodType" %>
 <%@ page import="java.util.List" %>
 <%@ page contentType="text/html; charset=UTF-8" language="java" %>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Food Types</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
+
 <body>
 <h1>Food Types</h1>
 
 <form action="${pageContext.request.contextPath}/foodtypes/add" method="post">
     <label for="name">Food Type Name: </label>
     <input type="text" id="name" name="name" required />
-    <button type="submit">Add Food Type</button>
+    <button type="submit" class="view-button">Add Food Type</button>
 </form>
 
-<table border="1">
+<table>
     <thead>
     <tr>
         <th>ID</th>
@@ -33,9 +36,11 @@
         <td><%= foodType.getId() %></td>
         <td><%= foodType.getType() %></td>
         <td>
-            <form action="${pageContext.request.contextPath}/foodtypes/delete/<%= foodType.getId() %>" method="post">
-                <button type="submit">Delete</button>
-            </form>
+            <div class="action-buttons">
+                <form action="${pageContext.request.contextPath}/foodtypes/delete/<%= foodType.getId() %>" method="post">
+                    <button type="submit" class="delete-button">Delete</button>
+                </form>
+            </div>
         </td>
     </tr>
     <%
@@ -43,6 +48,5 @@
     %>
     </tbody>
 </table>
-
 </body>
 </html>

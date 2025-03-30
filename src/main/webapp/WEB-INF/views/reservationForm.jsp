@@ -1,14 +1,16 @@
 <%@ page import="java.time.LocalDateTime" %>
 <%@ page import="com.restaurant.reservation.model.Reservation" %>
-<link rel="stylesheet" type="text/css" href="css/styles.css">
 
 <!DOCTYPE html>
 <html>
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create a Reservation</title>
+    <link rel="stylesheet" type="text/css" href="/css/styles.css">
 </head>
 <body>
-<div class="container">
+<div class="reservation-form-container">
     <h1>Create a Reservation</h1>
 
     <form action="${pageContext.request.contextPath}/reservation" method="post">
@@ -24,11 +26,10 @@
         <label>Status:</label>
         <select name="status" required>
             <option value="Pending">Pending</option>
-            <option value="Confirmed">Confirmed</option>
             <option value="Cancelled">Cancelled</option>
         </select><br><br>
 
-        <button type="submit" class="submit-button">Make Reservation</button>
+        <button type="submit" class="reserve-button">Make Reservation</button>
     </form>
 </div>
 </body>
