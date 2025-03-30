@@ -19,6 +19,19 @@
 <div class="content">
     <h1>Restaurants List</h1>
 
+    <form action="${pageContext.request.contextPath}/restaurants/search" method="get">
+        <input type="text" name="searchQuery" placeholder="Search for restaurants..." />
+
+        <label for="sortBy">Sort By:</label>
+        <select name="sortBy" id="sortBy">
+            <option value="name">Name</option>
+            <option value="location">Location</option>
+            <option value="cuisine">Cuisine Type</option>
+        </select>
+
+        <button type="submit">Search</button>
+    </form>
+
     <%
         List<String> images = new ArrayList<>();
         images.add("https://images.pexels.com/photos/262978/pexels-photo-262978.jpeg?auto=compress&cs=tinysrgb&w=600");

@@ -1,26 +1,24 @@
 package com.restaurant.reservation.controller;
 
+import com.restaurant.reservation.exception.CustomException;
 import com.restaurant.reservation.model.User;
 import com.restaurant.reservation.service.UserService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
 
-@RestController
-@RequestMapping("/api/users")
+@Slf4j
+@Controller
+@RequestMapping("/user")
 public class UserController {
 
     @Autowired
     private UserService userService;
-
-    @PostMapping
-    public ResponseEntity<User> createUser(@RequestBody User user) {
-        User savedUser = userService.addUser(user);
-        return ResponseEntity.ok(savedUser);
-    }
 
     @GetMapping
     public List<User> getAllUsers() {
@@ -28,20 +26,38 @@ public class UserController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<User> getUserById(@PathVariable Long id) {
-        Optional<User> user = userService.getUserById(id);
-        return user.map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
+    public String getUserById(@PathVariable Long id, Model model) {
+        User user = userService.getUserById(id)
+                .orElseThrow(() -> new CustomException("User not found"));
+
+        log.info(user.toString());
+        model.addAttribute("user", user);
+        return "restaurants";
     }
 
-    @PutMapping("/{id}")
-    public ResponseEntity<User> updateUser(@PathVariable Long id, @RequestBody User updatedUser) {
-        User updated = userService.updateUser(id, updatedUser);
-        return updated != null ? ResponseEntity.ok(updated) : ResponseEntity.notFound().build();
+    @PostMapping("/update/{id}")
+    public String updateUser(@PathVariable Long id,
+                             @RequestParam String name,
+                             @RequestParam String email,
+                             @RequestParam String phone,
+                             @RequestParam String password) {
+        Optional<User> optionalUser = userService.getUserById(id);
+        if (optionalUser.isEmpty()) {
+            throw new CustomException("An error has occured. Please go back and try again.");
+        }
+
+        User user = optionalUser.get();
+        user.setName(name);
+        user.setEmail(email);
+        user.setPhone(phone);
+        user.setPassword(password);
+        userService.updateUser(id, user);
+        return "restaurants";
     }
 
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteUser(@PathVariable Long id) {
+    @PostMapping("/delete/{id}")
+    public String deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
-        return ResponseEntity.noContent().build();
+        return "redirect:/login";
     }
 }

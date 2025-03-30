@@ -123,4 +123,16 @@ public class RestaurantController {
         restaurantService.deleteRestaurant(id);
         return "redirect:/restaurants";
     }
+
+    @RequestMapping("/search")
+    public String searchRestaurants(
+            @RequestParam(value = "searchQuery", required = false) String searchQuery,
+            @RequestParam(value = "sortBy", defaultValue = "name") String sortBy,
+            Model model) {
+
+        List<Restaurant> restaurants = restaurantService.searchRestaurants(searchQuery, sortBy);
+
+        model.addAttribute("restaurants", restaurants);
+        return "restaurantList";
+    }
 }

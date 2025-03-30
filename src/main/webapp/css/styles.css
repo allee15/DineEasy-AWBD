@@ -292,3 +292,49 @@ th, td {
     justify-content: center;
     gap: 10px;
 }
+
+.logout-container {
+    text-align: center;
+    padding: 50px;
+    margin-top: 100px;
+}
+
+.logout-message {
+    font-size: 24px;
+    margin-bottom: 20px;
+}
+
+.register-container {
+    width: 300px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    padding: 20px 40px 20px 20px;
+}
+
+.login-container {
+    width: 300px;
+    margin: 0 auto;
+    padding: 20px 40px 20px 20px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+}
+
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}

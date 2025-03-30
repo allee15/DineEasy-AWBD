@@ -40,12 +40,11 @@ public class UserService {
         }
     }
 
-    public User updateUser(Long id, User updatedUser) {
+    public void updateUser(Long id, User updatedUser) {
         log.info("Updating User with ID: {}", id);
         if (userRepository.existsById(id)) {
             updatedUser.setId(id);
-            return userRepository.save(updatedUser);
+            userRepository.save(updatedUser);
         }
-        return null;
     }
 }
