@@ -14,6 +14,8 @@
 <body>
 <div class="register-container">
   <h1>Register</h1>
+
+
   <form action="${pageContext.request.contextPath}/auth/register" method="post">
     <div class="form-group">
       <label for="name">Name:</label>
@@ -22,6 +24,11 @@
     <div class="form-group">
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" required placeholder="Enter your email">
+      <c:if test="${not empty paramValues.get('error')}">
+        <div style="color: red;">
+          Email-ul ${paramValues.get('email')} este deja folosit.
+        </div>
+      </c:if>
     </div>
     <div class="form-group">
       <label for="phone">Phone:</label>

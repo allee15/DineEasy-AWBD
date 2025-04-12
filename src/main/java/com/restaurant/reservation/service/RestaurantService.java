@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
+import com.restaurant.reservation.utils.Pagination;
 
 import java.util.Comparator;
 import java.util.List;
@@ -26,8 +27,9 @@ public class RestaurantService {
         return restaurantRepository.save(restaurant);
     }
 
-    public List<Restaurant> getAllRestaurants() {
-        return restaurantRepository.findAll();
+    public Pagination<Restaurant> getAllRestaurants(int page) {
+        List<Restaurant> restaurants = restaurantRepository.findAll();
+        return new Pagination<>(restaurants, page, 20);
     }
 
     public Page<Restaurant> getRestaurantsByLocation(String location, int page, int size) {

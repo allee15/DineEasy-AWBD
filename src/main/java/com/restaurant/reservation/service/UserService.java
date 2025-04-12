@@ -5,6 +5,7 @@ import com.restaurant.reservation.model.User;
 import com.restaurant.reservation.repository.UserRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
@@ -14,8 +15,11 @@ import java.util.Optional;
 public class UserService {
     @Autowired
     private UserRepository userRepository;
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public User addUser(User user) {
+        user.setPassword(passwordEncoder.encode(user.getPassword()));
         log.info("Adding new User: {}", user);
         return userRepository.save(user);
     }
@@ -23,6 +27,11 @@ public class UserService {
     public List<User> getAllUsers() {
         log.info("Fetching all Users");
         return userRepository.findAll();
+    }
+
+    public Optional<User> getUserByEmail(String email) {
+        log.info("Fetching User By Email: {}", email);
+        return userRepository.findByEmail(email);
     }
 
     public Optional<User> getUserById(Long id) {

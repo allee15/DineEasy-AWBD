@@ -15,7 +15,7 @@
 <div class="logout-container">
     <h1>Goodbye!</h1>
     <p class="logout-message">We hope you had a great time. Click the button below to log out and come back soon!</p>
-    <form action="${pageContext.request.contextPath}/auth/logout" method="get">
+    <form action="${pageContext.request.contextPath}/logout" method="post">
         <button type="submit" class="delete-button">Logout</button>
     </form>
 </div>

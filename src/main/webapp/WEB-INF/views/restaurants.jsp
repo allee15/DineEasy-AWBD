@@ -88,6 +88,28 @@
         </div>
     </div>
     <% } %>
+
+    <!-- Paginarea -->
+    <div class="pagination">
+        <%
+            int currentPage = (int) request.getAttribute("currentPage");
+            int totalPages = (int) request.getAttribute("totalPages");
+        %>
+        <p>Page <%= currentPage %> of <%= totalPages %></p>
+
+        <% if (currentPage > 1) { %>
+        <a href="${pageContext.request.contextPath}/restaurants?page=<%= currentPage - 1 %>">&lt; Previous</a>
+        <% } %>
+
+        <% for (int i = 1; i <= totalPages; i++) { %>
+        <a href="${pageContext.request.contextPath}/restaurants?page=<%= i %>"><%= i %></a>
+        <% } %>
+
+        <% if (currentPage < totalPages) { %>
+        <a href="${pageContext.request.contextPath}/restaurants?page=<%= currentPage + 1 %>">Next &gt;</a>
+        <% } %>
+    </div>
+
 </div>
 </body>
 </html>

@@ -1,20 +1,21 @@
 package com.restaurant.reservation.controller;
 
 import com.restaurant.reservation.exception.CustomException;
-import com.restaurant.reservation.model.FoodType;
-import com.restaurant.reservation.model.Menu;
-import com.restaurant.reservation.model.Review;
+import com.restaurant.reservation.model.*;
 import com.restaurant.reservation.repository.FoodTypeRepository;
 import com.restaurant.reservation.repository.MenuRepository;
 import com.restaurant.reservation.repository.ReviewRepository;
 import com.restaurant.reservation.validator.RestaurantValidator;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.ui.Model;
-import com.restaurant.reservation.model.Restaurant;
 import com.restaurant.reservation.service.RestaurantService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import com.restaurant.reservation.utils.Pagination;
 
 import java.util.List;
 import java.util.Optional;
@@ -37,11 +38,20 @@ public class RestaurantController {
     private FoodTypeRepository foodTypeRepository;
 
     @GetMapping
-    public String getAllRestaurants(Model model) {
-        List<Restaurant> restaurants = restaurantService.getAllRestaurants();
-        model.addAttribute("restaurants", restaurants);
-        System.out.println("Restaurants found: " + restaurants.size());
-        for (Restaurant r : restaurants) {
+    public String getAllRestaurants(@RequestParam(value = "page", defaultValue = "1") int page, Model model) {
+        Object principal = SecurityContextHolder.getContext().getAuthentication();
+
+        // Verifică dacă principalul este de tip UserDetails
+            log.info(principal.toString());
+
+        Pagination<Restaurant> restaurants = restaurantService.getAllRestaurants(page);
+
+        model.addAttribute("restaurants", restaurants.getCurrentPageData());
+        model.addAttribute("currentPage", page);
+        model.addAttribute("totalPages", restaurants.getTotalPages());
+
+        System.out.println("Restaurants found: " + restaurants.getCurrentPageData());
+        for (Restaurant r : restaurants.getCurrentPageData()) {
             System.out.println("Restaurant: " + r.getName() + " - " + r.getLocation());
         }
 

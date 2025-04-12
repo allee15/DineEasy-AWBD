@@ -68,6 +68,10 @@ public class User {
         this.id = id;
     }
 
+    public String getRole() {
+        return "USER";
+    }
+
     public List<Reservation> getReservations() {
         return reservations;
     }
