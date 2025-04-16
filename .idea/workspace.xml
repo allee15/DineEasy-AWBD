@@ -5,13 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="780d2bc5-2d06-4b80-b6d8-86c396ab6703" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/controller/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/exception/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/model/Menu.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/repository/MenuRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/service/MenuService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/validator/MenuValidator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro-services/restaurant-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/micro-services/restaurant-service/src/main/resources/application.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/controller/ReservationConfirmationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/controller/ReservationController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/exception/CustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/model/Reservation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/model/ReservationConfirmation.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/repository/ReservationConfirmationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/repository/ReservationRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/service/ConfirmationReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/service/ReservationService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/reservation-service/src/main/java/com/restaurant/reservation/reservationservice/validator/ReservationValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro-services/menu-service/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/micro-services/menu-service/build.gradle" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +109,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744793133909</updated>
-      <workItem from="1744793135165" duration="8589000" />
+      <workItem from="1744793135165" duration="10418000" />
     </task>
     <servers />
   </component>
