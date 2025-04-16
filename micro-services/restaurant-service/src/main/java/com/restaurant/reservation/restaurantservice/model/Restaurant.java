@@ -12,9 +12,6 @@ public class Restaurant {
     private String name;
     private String location;
 
-    @Transient
-    private String foodTypeName;
-
     @ManyToOne
     @JoinColumn(name = "food_type_id", nullable = false)
     private FoodType foodType;
@@ -66,10 +63,6 @@ public class Restaurant {
 
     public void setFoodType(FoodType foodType) {
         this.foodType = foodType;
-    }
-
-    public String getFoodTypeName() {
-        return foodTypeName;
     }
 
     public List<Long> getReservationIds() {
