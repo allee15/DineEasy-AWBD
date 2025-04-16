@@ -4,22 +4,28 @@ import com.restaurant.reservation.restaurantservice.exception.CustomException;
 import com.restaurant.reservation.restaurantservice.model.FoodType;
 import com.restaurant.reservation.restaurantservice.model.Restaurant;
 import com.restaurant.reservation.restaurantservice.repository.RestaurantRepository;
+import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import com.restaurant.reservation.restaurantservice.utils.Pagination;
+import org.springframework.web.client.RestTemplate;
 
 import java.util.Comparator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
+@Slf4j
 @Service
 public class RestaurantService {
     @Autowired
     private RestaurantRepository restaurantRepository;
+
+    @Autowired
+    private RestTemplate restTemplate;
 
     public Restaurant addRestaurant(Restaurant restaurant) {
         return restaurantRepository.save(restaurant);
@@ -33,6 +39,15 @@ public class RestaurantService {
     public Page<Restaurant> getRestaurantsByLocation(String location, int page, int size) {
         org.springframework.data.domain.Pageable pageable = PageRequest.of(page, size);
         return restaurantRepository.findByLocation(location, pageable);
+    }
+
+    @CircuitBreaker(name = "restaurantService", fallbackMethod = "fallbackGetRestaurantByFoodType")
+    public Restaurant getRestaurantDetails(Long id) {
+        return restTemplate.getForObject("http://restaurant-details-service/details/" + id, Restaurant.class);
+    }
+
+    public Restaurant fallbackGetRestaurantById(Long id, Throwable throwable) {
+        return new Restaurant("Fallback restaurant", "Unknown location", new FoodType());
     }
 
     public Page<Restaurant> getRestaurantsByFoodType(FoodType foodType, int page, int size) {
