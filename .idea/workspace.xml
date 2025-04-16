@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="RunManager">
+    <configuration default="true" type="JetRunConfigurationType">
+      <module name="RestaurantReservation" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration default="true" type="KotlinStandaloneScriptRunConfigurationType">
+      <module name="RestaurantReservation" />
+      <option name="filePath" />
+      <method v="2" />
+    </configuration>
+    <configuration name="RestaurantReservationAwbdApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="restaurant-reservation" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.restaurant.reservation.RestaurantReservationAwbdApplication" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+  </component>
+</project>
