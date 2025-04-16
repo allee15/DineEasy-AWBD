@@ -5,16 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="780d2bc5-2d06-4b80-b6d8-86c396ab6703" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/SecurityConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/controller/AuthController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/controller/UserController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/exception/CustomException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/repository/UserRepository.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/service/CustomUserDetailsService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/controller/MenuController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/exception/CustomException.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/model/Menu.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/repository/MenuRepository.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/service/MenuService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/micro-services/menu-service/src/main/java/com/restaurant/reservation/menuservice/validator/MenuValidator.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/micro-services/restaurant-service/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/micro-services/restaurant-service/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -108,7 +105,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1744793133909</updated>
-      <workItem from="1744793135165" duration="5313000" />
+      <workItem from="1744793135165" duration="8589000" />
     </task>
     <servers />
   </component>
