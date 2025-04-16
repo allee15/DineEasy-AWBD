@@ -14,10 +14,7 @@ public class Review {
     private String comment;
     private LocalDateTime reviewDate;
 
-    @Transient
     private Long restaurantId;
-
-    @Transient
     private Long userId;
 
     public Review() {}

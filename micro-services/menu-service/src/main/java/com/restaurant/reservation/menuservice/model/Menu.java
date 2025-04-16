@@ -15,7 +15,6 @@ public class Menu {
     private Integer price;
     private String photo;
 
-    @Transient
     private Long restaurantId;
 
     public Menu() {}
