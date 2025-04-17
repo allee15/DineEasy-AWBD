@@ -5,7 +5,27 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="780d2bc5-2d06-4b80-b6d8-86c396ab6703" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/screenshots/addrest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/circuitbreaker.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/deleterest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/editrest.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/erd.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/eureka.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/food.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/health.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/health2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/loadbalancing.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/login.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/metrics.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/pagination.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/reservation.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/reservations.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/restDetails.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/restDetails2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/restaurants.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/screenshots/search.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -15,18 +35,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "allee15"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;allee15&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/allee15/DineEasy-AWBD.git",
-    "accountId": "9c7252aa-3a24-4659-a8ff-35c855181c01"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/allee15/DineEasy-AWBD.git&quot;,
+    &quot;accountId&quot;: &quot;9c7252aa-3a24-4659-a8ff-35c855181c01&quot;
   }
-}]]></component>
+}</component>
   <component name="MavenImportPreferences">
     <option name="generalSettings">
       <MavenGeneralSettings>
@@ -34,37 +54,43 @@
       </MavenGeneralSettings>
     </option>
   </component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 2
-}]]></component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 2
+}</component>
   <component name="ProjectId" id="2vnuPLM1LVfV8uHg3cOEXoY3MvX" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "Spring Boot.RestaurantReservationAwbdApplication.executor": "Run",
-    "git-widget-placeholder": "main",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/allee/Documents/Master/AWBD/DineEasy/RestaurantReservation/micro-services",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;Spring Boot.RestaurantReservationAwbdApplication.executor&quot;: &quot;Run&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/allee/Documents/Master/AWBD/DineEasy/RestaurantReservation/micro-services&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/micro-services" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/screenshots" />
     </key>
   </component>
   <component name="RunManager">
@@ -105,6 +131,8 @@
       <option name="presentableId" value="Default" />
       <updated>1744793133909</updated>
       <workItem from="1744793135165" duration="15325000" />
+      <workItem from="1744834156361" duration="8000" />
+      <workItem from="1744880841601" duration="2904000" />
     </task>
     <servers />
   </component>
