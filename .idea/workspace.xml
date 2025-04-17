@@ -5,32 +5,33 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="780d2bc5-2d06-4b80-b6d8-86c396ab6703" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/screenshots/addrest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/circuitbreaker.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/deleterest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/editrest.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/erd.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/eureka.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/food.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/health.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/health2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/loadbalancing.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/login.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/metrics.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/pagination.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/reservation.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/reservations.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/restDetails.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/restDetails2.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/restaurants.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/screenshots/search.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/ConfirmationReservationServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/CustomUserDetailsServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/EmailServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/FoodTypeServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/MenuServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/ReservationServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/RestaurantServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/ReviewServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/service/UserServiceTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/utils/PaginationTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/validator/MenuValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/validator/ReservationValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/validator/RestaurantValidatorTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/validator/ReviewValidatorTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -65,26 +66,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;Spring Boot.RestaurantReservationAwbdApplication.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/allee/Documents/Master/AWBD/DineEasy/RestaurantReservation/micro-services&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "JUnit.FoodTypeControllerTest.addFoodType.executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "Spring Boot.RestaurantReservationAwbdApplication.executor": "Run",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "git-widget-placeholder": "main",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "/Users/allee/Documents/Master/AWBD/DineEasy/RestaurantReservation/micro-services",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/micro-services" />
@@ -92,8 +96,33 @@
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/screenshots" />
     </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="com.restaurant.reservation.validator" />
+      <recent name="com.restaurant.reservation.utils" />
+      <recent name="com.restaurant.reservation.service" />
+      <recent name="com.restaurant.reservation.controller" />
+    </key>
   </component>
-  <component name="RunManager">
+  <component name="RunManager" selected="Spring Boot.RestaurantReservationAwbdApplication">
+    <configuration name="FoodTypeControllerTest.addFoodType" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="restaurant-reservation" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.restaurant.reservation.controller.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <option name="PACKAGE_NAME" value="com.restaurant.reservation.controller" />
+      <option name="MAIN_CLASS_NAME" value="com.restaurant.reservation.controller.FoodTypeControllerTest" />
+      <option name="METHOD_NAME" value="addFoodType" />
+      <option name="TEST_OBJECT" value="method" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration default="true" type="JetRunConfigurationType">
       <module name="RestaurantReservation" />
       <method v="2">
@@ -113,6 +142,11 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="JUnit.FoodTypeControllerTest.addFoodType" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SharedIndexes">
     <attachedChunks>
@@ -132,7 +166,8 @@
       <updated>1744793133909</updated>
       <workItem from="1744793135165" duration="15325000" />
       <workItem from="1744834156361" duration="8000" />
-      <workItem from="1744880841601" duration="2904000" />
+      <workItem from="1744880841601" duration="3358000" />
+      <workItem from="1744900219166" duration="3875000" />
     </task>
     <servers />
   </component>
