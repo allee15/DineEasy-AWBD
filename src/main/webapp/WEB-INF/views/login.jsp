@@ -16,8 +16,8 @@
   <h1>Login</h1>
   <form action="${pageContext.request.contextPath}/auth/login" method="post">
     <div class="form-group">
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required placeholder="Enter your email">
+      <label for="username">Email:</label>
+      <input type="email" id="username" name="username" required placeholder="Enter your email">
     </div>
     <div class="form-group">
       <label for="password">Password:</label>
@@ -25,6 +25,15 @@
     </div>
     <button type="submit" class="delete-button">Login</button>
   </form>
+
+  <%
+    String error = request.getParameter("error");
+    if (error != null && !error.isEmpty()) {
+  %>
+  <p style="color: red;">Login failed: <%= error %></p>
+  <%
+    }
+  %>
 </div>
 </body>
 </html>

@@ -21,8 +21,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.util.UriUtils;
 
 import java.nio.charset.StandardCharsets;
-import java.util.HashMap;
-import java.util.Map;
 import java.util.Optional;
 
 @Controller
@@ -39,62 +37,45 @@ public class AuthController {
     @Autowired
     private CustomUserDetailsService customUserDetailsService;
 
-    @PostMapping("/login")
-    public Map<String, String> loginUser(
-            @RequestParam String email,
-            @RequestParam String password) {
+    @GetMapping("/login")
+    public String login() {
+        return "login";
+    }
 
-        Optional<User> user = userService.getUserByEmail(email);
-        Map<String, String> response = new HashMap<>();
+    @GetMapping("/register")
+    public String register(
+            @RequestParam(value = "error", required = false) String error,
+            @RequestParam(value = "email", required = false) String email,
+            Model model) {
 
-        if (user.isEmpty()) {
-            response.put("error", "Email not found");
-            return response;
+        log.info("Registering new user: {}", email);
+        if(email != null && error.equals("email")) {
+            model.addAttribute("email", email);
         }
 
-        if (!passwordEncoder.matches(password, user.get().getPassword())) {
-            response.put("error", "Invalid password");
-            return response;
-        }
+        log.info("Registering new user: {}", model);
 
-        log.info("Fetching User By Email: {}", user);
-
-        Authentication authentication = authenticationManager.authenticate(
-                new UsernamePasswordAuthenticationToken(email, password)
-        );
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        response.put("message", "Login successful");
-        response.put("user", user.get().getEmail());
-        return response;
+        return "register";
     }
 
     @PostMapping("/register")
-    public Map<String, String> registerUser(
+    public String registerUser(
             @RequestParam String email,
             @RequestParam String name,
             @RequestParam String phone,
             @RequestParam String password) {
 
-        Map<String, String> response = new HashMap<>();
-
-        if (userService.getUserByEmail(email).isPresent()) {
-            response.put("error", "Email already in use");
-            return response;
+        boolean userExists = userService.getUserByEmail(email).isPresent();
+        log.info(userExists ? "User exists" : "User not found");
+        if (!userExists) {
+            User user = userService.addUser(new User(name, email, phone, password));
+            log.info("User registered: {}", user);
+            return "redirect:/auth/login";
+        } else {
+            return "redirect:/auth/register?error=email&email=" + UriUtils.encode(email, StandardCharsets.UTF_8);
         }
-
-        User user = userService.addUser(new User(name, email, phone, password));
-        response.put("message", "User registered successfully");
-        response.put("user", user.getEmail());
-
-        return response;
     }
 
-    @PostMapping("/logout")
-    public Map<String, String> logout(HttpServletRequest request) {
-        SecurityContextHolder.clearContext();
-        Map<String, String> response = new HashMap<>();
-        response.put("message", "Logged out successfully");
-        return response;
-    }
+    @GetMapping("/logout")
+    public String logout() { return "logout"; }
 }

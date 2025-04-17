@@ -87,8 +87,6 @@ Java, Spring Boot, Spring Cloud, Spring Security, Spring Data JPA, Eureka, Sprin
 ![Pagination](screenshots/addrest.png)
 ![Pagination](screenshots/reservations.png)
 ![Pagination](screenshots/food.png)
-![Pagination](screenshots/login.png)
-![Pagination](screenshots/register.png)
 
 ---
 
@@ -100,11 +98,23 @@ Java, Spring Boot, Spring Cloud, Spring Security, Spring Data JPA, Eureka, Sprin
 ---
 
 ### **🔐 Security**
-- Configured with Spring Security (JWT or JDBC-based login)
-- Endpoints are protected accordingly
-📸 Screenshot of login page or token response
-📸 SecurityConfig.java file
-TODO!!!!!!!!!
+- Configured Spring Security using form-based authentication with session management.
+- Protected routes via LoginRequiredInterceptor for custom access control.
+- Auth flow includes:
+  - /auth/login for login (custom JSP page).
+  - /auth/register for registration.
+  - /auth/logout for logout with session invalidation.
+- On successful login, user is redirected to /restaurants.
+- Spring SecurityFilterChain is configured programmatically with:
+- CustomAuthenticationSuccessHandler and CustomAuthenticationFailureHandler.
+- **BCryptPasswordEncoder** for secure password hashing.
+- Manual session validation via SecurityContextHolder inside a custom interceptor.
+
+![Pagination](screenshots/login.png)
+![Pagination](screenshots/register.png)
+![Pagination](screenshots/securityconfig.png)
+![Pagination](screenshots/unlogged.png)
+
 ---
 
 ### **🧱 Microservices**

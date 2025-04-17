@@ -42,36 +42,6 @@ public class AuthController {
         return "login";
     }
 
-    @PostMapping("/login")
-    public String loginUser(
-            @RequestParam String email,
-            @RequestParam String password,
-            HttpServletRequest request) {
-
-        Optional<User> user = userService.getUserByEmail(email);
-
-        log.info("Fetching User By Email: {}", user);
-        if(user.isEmpty())
-            return "redirect:/auth/register?error=email&email=" + UriUtils.encode(email, StandardCharsets.UTF_8);
-        else {
-            log.info("Password {}, hashed passowrd {}", passwordEncoder.encode(password), user.get().getPassword());
-            if (!passwordEncoder.matches(password, user.get().getPassword())) {
-                return "redirect:/auth/login?error=" + UriUtils.encode("This email/password combination is not correct", StandardCharsets.UTF_8);
-            } else {
-                log.info("User logged: {}", user);
-
-                Authentication authentication = authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(
-                        email, password
-                ));
-
-                SecurityContextHolder.getContext().setAuthentication(authentication);
-                    return "redirect:/restaurants";
-
-            }
-        }
-
-    }
-
     @GetMapping("/register")
     public String register(
             @RequestParam(value = "error", required = false) String error,
@@ -95,13 +65,14 @@ public class AuthController {
             @RequestParam String phone,
             @RequestParam String password) {
 
-        User user = userService.addUser(new User(name, email, phone, password));
-
-        log.info("User registered: {}", user);
-        if (user != null) {
-            return "redirect:/restaurants";
+        boolean userExists = userService.getUserByEmail(email).isPresent();
+        log.info(userExists ? "User exists" : "User not found");
+        if (!userExists) {
+            User user = userService.addUser(new User(name, email, phone, password));
+            log.info("User registered: {}", user);
+            return "redirect:/auth/login";
         } else {
-            return "redirect:/register?error=email&email=" + UriUtils.encode(email, StandardCharsets.UTF_8);
+            return "redirect:/auth/register?error=email&email=" + UriUtils.encode(email, StandardCharsets.UTF_8);
         }
     }
 
