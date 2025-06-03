@@ -1,5 +1,6 @@
 package com.restaurant.reservation.authservice.service;
 
+import com.restaurant.reservation.authservice.exception.CustomException;
 import com.restaurant.reservation.authservice.model.User;
 import com.restaurant.reservation.authservice.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +21,7 @@ public class CustomUserDetailsService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = userRepository.findByEmail(email)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
+                .orElseThrow(() -> new CustomException("User not found"));
 
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),

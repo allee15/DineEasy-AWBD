@@ -41,7 +41,7 @@ public class RestaurantController {
     @GetMapping("/restaurantDetails/{id}")
     public String getRestaurantDetails(@PathVariable Long id, Model model) {
         Restaurant restaurant = restaurantService.getRestaurantById(id)
-                .orElseThrow(() -> new RuntimeException("Restaurant not found"));
+                .orElseThrow(() -> new CustomException("Restaurant not found"));
 
         model.addAttribute("restaurant", restaurant);
 
@@ -58,7 +58,7 @@ public class RestaurantController {
 
     @PostMapping("/add")
     public String addRestaurant(@RequestParam String name, @RequestParam String location, @RequestParam Long foodTypeId) {
-        FoodType foodType = foodTypeRepository.findById(foodTypeId).orElseThrow(() -> new RuntimeException("FoodType not found"));
+        FoodType foodType = foodTypeRepository.findById(foodTypeId).orElseThrow(() -> new CustomException("FoodType not found"));
 
         Restaurant restaurant = new Restaurant();
         restaurant.setName(name);
