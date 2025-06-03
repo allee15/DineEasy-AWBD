@@ -5,17 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="780d2bc5-2d06-4b80-b6d8-86c396ab6703" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/screenshots/securityconfig.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/middleware/LoginRequiredInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/exception/GlobalExceptionHandler.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/custom-error.jsp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/controller/AuthControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/controller/FoodTypeControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/controller/MenuControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/controller/ReservationConfirmationControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/controller/ReservationControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/controller/RestaurantControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/controller/ReviewControllerTest.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/test/java/com/restaurant/reservation/controller/UserControllerTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/repository/UserRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/micro-services/auth-service/src/main/java/com/restaurant/reservation/authservice/repository/UserRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/WebConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/WebConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/login.jsp" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/sidebar.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/webapp/WEB-INF/views/sidebar.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/controller/ReservationConfirmationController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/controller/ReservationConfirmationController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/controller/RestaurantController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/restaurant/reservation/controller/RestaurantController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,6 +28,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="JUnit5 Test Class" />
+        <option value="Exception" />
+        <option value="Jsp File" />
         <option value="Class" />
       </list>
     </option>
@@ -77,7 +81,7 @@
     &quot;com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5&quot;: &quot;&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/Users/allee/Documents/Master/AWBD/DineEasy/RestaurantReservation/micro-services&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/Users/allee/Documents/Master/AWBD/DineEasy/RestaurantReservation&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -165,7 +169,9 @@
       <workItem from="1744834156361" duration="8000" />
       <workItem from="1744880841601" duration="3358000" />
       <workItem from="1744900219166" duration="4096000" />
-      <workItem from="1744912032802" duration="1507000" />
+      <workItem from="1744912032802" duration="1685000" />
+      <workItem from="1748896028367" duration="173000" />
+      <workItem from="1748930285294" duration="4010000" />
     </task>
     <servers />
   </component>

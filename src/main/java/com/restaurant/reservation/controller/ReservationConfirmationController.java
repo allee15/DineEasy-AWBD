@@ -52,7 +52,7 @@ public class ReservationConfirmationController {
 
     @PostMapping("/add/confirmation")
     public String createReservationConfirmation(@RequestBody ReservationConfirmation reservationConfirmation, @RequestParam Long reservationId) {
-        Reservation reservation = reservationRepository.findById(reservationId).orElseThrow(() -> new RuntimeException("Reservation not found"));
+        Reservation reservation = reservationRepository.findById(reservationId).orElseThrow(() -> new CustomException("Reservation not found"));
 
         ReservationConfirmation confirmation = new ReservationConfirmation();
         confirmation.setEmailSent(true);
